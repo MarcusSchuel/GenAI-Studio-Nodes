@@ -1,0 +1,187 @@
+{
+    "nodes": [
+        {
+            "id": "Chroma-c7yWy",
+            "name": "Chroma",
+            "type": "CustomComponent",
+            "description": "Implementation of Vector Store using Chroma.",
+            "base_classes": ["VectorStore", "BaseRetriever"],
+            "output_types": ["VectorStore", "BaseRetriever"],
+            "documentation": "https://python.langchain.com/docs/integrations/vectorstores/chroma",
+            "template_fields": {
+                "documents": {"required": false, "type": "List"},
+                "embedding": {"required": true, "type": "Embeddings"},
+                "server_settings": {
+                    "CORS_Allow_Origins": "Optional",
+                    "gRPC_Port": "Optional",
+                    "Host": "Optional",
+                    "Port": "Optional",
+                    "SSL_Enabled": {"required": true, "type": "Boolean"}
+                },
+                "collection_name": {"default": "langflow", "type": "String"},
+                "persist": {"required": true, "type": "Boolean"}
+            }
+        },
+        {
+            "id": "FAISS-RqVlz",
+            "name": "FAISS",
+            "type": "CustomComponent",
+            "description": "Constructs FAISS wrapper from raw documents.",
+            "base_classes": ["VectorStore", "FAISS", "BaseRetriever"],
+            "output_types": ["VectorStore", "FAISS", "BaseRetriever"],
+            "documentation": "https://python.langchain.com/docs/modules/data_connection/vectorstores/integrations/faiss",
+            "template_fields": {
+                "documents": {"required": true, "type": "List"},
+                "embedding": {"required": true, "type": "Embeddings"}
+            }
+        },
+        {
+            "id": "MongoDBAtlasVectorSearch-1xO7r",
+            "name": "MongoDB Atlas Vector Search",
+            "type": "CustomComponent",
+            "description": "MongoDB Atlas Vector Search from raw documents.",
+            "base_classes": ["VectorStore", "MongoDBAtlasVectorSearch"],
+            "output_types": ["MongoDBAtlasVectorSearch"],
+            "documentation": "",
+            "template_fields": {
+                "documents": {"required": false, "type": "List"},
+                "embedding": {"required": true, "type": "Embeddings"},
+                "connection_settings": {
+                    "Database_Name": {"required": true, "type": "String"},
+                    "Collection_Name": {"required": true, "type": "String"},
+                    "Index_Name": {"required": true, "type": "String"},
+                    "MongoDB_Connection_URI": {"required": true, "type": "String"}
+                }
+            }
+        },
+        {
+            "id": "pgvector-nHOjS",
+            "name": "PGVector",
+            "type": "CustomComponent",
+            "description": "Implementation of Vector Store using PostgreSQL.",
+            "base_classes": ["VectorStore", "BaseRetriever"],
+            "output_types": ["VectorStore", "BaseRetriever"],
+            "documentation": "https://python.langchain.com/docs/integrations/vectorstores/pgvector",
+            "template_fields": {
+                "documents": {"required": false, "type": "List"},
+                "embedding": {"required": true, "type": "Embeddings"},
+                "pg_settings": {
+                    "Connection_String": {"required": true, "type": "String"},
+                    "Table_Name": {"required": true, "type": "String"}
+                }
+            }
+        },
+        {
+            "id": "Pinecone-lygUU",
+            "name": "Pinecone",
+            "type": "CustomComponent",
+            "description": "Constructs Pinecone wrapper from raw documents.",
+            "base_classes": ["VectorStore", "Pinecone", "BaseRetriever"],
+            "output_types": ["VectorStore", "Pinecone", "BaseRetriever"],
+            "template_fields": {
+                "documents": {"required": true, "type": "List"},
+                "embedding": {"required": true, "type": "Embeddings"},
+                "pinecone_settings": {
+                    "API_Key": {"required": true, "type": "String"},
+                    "Environment": {"required": true, "type": "String"},
+                    "Index_Name": {"required": true, "type": "String"},
+                    "Namespace": {"default": "default", "type": "String"}
+                }
+            }
+        },
+        {
+            "id": "Qdrant-JoMAM",
+            "name": "Qdrant",
+            "type": "CustomComponent",
+            "description": "Constructs Qdrant wrapper from a list of texts.",
+            "base_classes": ["VectorStore", "Qdrant", "BaseRetriever"],
+            "output_types": ["VectorStore", "Qdrant", "BaseRetriever"],
+            "template_fields": {
+                "documents": {"required": false, "type": "List"},
+                "embedding": {"required": true, "type": "Embeddings"},
+                "qdrant_settings": {
+                    "API_Key": {"required": false, "type": "String"},
+                    "Host": "Optional",
+                    "Port": "Optional",
+                    "gRPC_Port": "Optional",
+                    "HTTPS": {"default": false, "type": "Boolean"},
+                    "Collection_Name": {"required": true, "type": "String"}
+                }
+            }
+        },
+        {
+            "id": "Redis-k5PgZ",
+            "name": "Redis",
+            "type": "CustomComponent",
+            "description": "Implementation of Vector Store using Redis.",
+            "base_classes": ["VectorStore", "BaseRetriever"],
+            "output_types": ["VectorStore", "BaseRetriever"],
+            "documentation": "https://python.langchain.com/docs/integrations/vectorstores/redis",
+            "template_fields": {
+                "documents": {"required": false, "type": "List"},
+                "embedding": {"required": true, "type": "Embeddings"},
+                "redis_settings": {
+                    "Server_URL": {"required": true, "type": "String"},
+                    "Index_Name": {"required": true, "type": "String"},
+                    "Schema": {"required": false, "type": "String"}
+                }
+            }
+        },
+        {
+            "id": "SupabaseVectorStore-ClQK4",
+            "name": "Supabase",
+            "type": "CustomComponent",
+            "description": "Return VectorStore initialized from texts and embeddings.",
+            "base_classes": ["VectorStore", "SupabaseVectorStore", "BaseRetriever"],
+            "output_types": ["VectorStore", "SupabaseVectorStore", "BaseRetriever"],
+            "template_fields": {
+                "documents": {"required": true, "type": "List"},
+                "embedding": {"required": true, "type": "Embeddings"},
+                "supabase_settings": {
+                    "Service_Key": {"required": true, "type": "String"},
+                    "URL": {"required": true, "type": "String"},
+                    "Query_Name": {"required": false, "type": "String"},
+                    "Table_Name": {"required": true, "type": "String"}
+                }
+            }
+        },
+        {
+            "id": "Vectara-z3nG9",
+            "name": "Vectara",
+            "type": "CustomComponent",
+            "description": "Implementation of Vector Store using Vectara.",
+            "base_classes": ["VectorStore", "BaseRetriever"],
+            "output_types": ["VectorStore", "BaseRetriever"],
+            "documentation": "https://python.langchain.com/docs/integrations/vectorstores/vectara",
+            "template_fields": {
+                "documents": {"required": false, "type": "List"},
+                "vectara_settings": {
+                    "Customer_ID": {"required": true, "type": "String"},
+                    "Corpus_ID": {"required": true, "type": "String"},
+                    "API_Key": {"required": true, "type": "String"},
+                    "Files_URL": {"required": false, "type": "List"}
+                }
+            }
+        },
+        {
+            "id": "Weaviate-2SCuG",
+            "name": "Weaviate",
+            "type": "CustomComponent",
+            "description": "Implementation of Vector Store using Weaviate.",
+            "base_classes": ["VectorStore", "BaseRetriever"],
+            "output_types": ["VectorStore", "BaseRetriever"],
+            "documentation": "https://python.langchain.com/docs/integrations/vectorstores/weaviate",
+            "template_fields": {
+                "documents": {"required": false, "type": "List"},
+                "embedding": {"required": false, "type": "Embeddings"},
+                "weaviate_settings": {
+                    "URL": {"required": true, "type": "String"},
+                    "API_Key": {"required": false, "type": "String"},
+                    "Index_Name": {"required": false, "type": "String"},
+                    "Text_Key": {"required": false, "default": "text", "type": "String"},
+                    "Attributes": {"required": false, "type": "List"}
+                }
+            }
+        }
+    ]
+}
