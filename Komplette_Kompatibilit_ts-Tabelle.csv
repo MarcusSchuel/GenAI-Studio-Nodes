@@ -1,0 +1,85 @@
+Komponente,Erwartete Eingaben,Ausgabe-Typ
+AgentInitializer,"llm: BaseLanguageModel, memory: BaseChatMemory, tools: Tool, agent: str, code: code, max_iterations: int","AgentExecutor, Callable"
+CSVAgent,"llm: BaseLanguageModel, path: file, code: code",AgentExecutor
+JsonAgent,"llm: BaseLanguageModel, toolkit: JsonToolkit, code: code",AgentExecutor
+OpenAIConversationalAgent,"memory: BaseMemory, system_message: SystemMessagePromptTemplate, tools: Tool, code: code, max_token_limit: int, model_name: str, openai_api_base: str, openai_api_key: str, temperature: float",AgentExecutor
+SQLAgent,"llm: BaseLanguageModel, code: code, database_uri: str, verbose: bool","AgentExecutor, Callable"
+VectorStoreAgent,"llm: BaseLanguageModel, vector_store_toolkit: VectorStoreToolkit, code: code","AgentExecutor, Callable"
+VectorStoreRouterAgent,"llm: BaseLanguageModel, vectorstoreroutertoolkit: VectorStoreRouterToolkit, code: code",Callable
+ZeroShotAgent,"callback_manager: BaseCallbackManager, llm: BaseLanguageModel, output_parser: AgentOutputParser, tools: BaseTool, format_instructions: str, input_variables: str, prefix: str, suffix: str",
+CombineDocsChain,"llm: BaseLanguageModel, chain_type: str",
+ConversationalRetrievalChain,"callbacks: Callbacks, condense_question_llm: BaseLanguageModel, condense_question_prompt: BasePromptTemplate, llm: BaseLanguageModel, memory: BaseChatMemory, retriever: BaseRetriever, chain_type: str, combine_docs_chain_kwargs: dict, return_source_documents: bool, verbose: bool",
+ConversationChain,"llm: BaseLanguageModel, memory: BaseMemory, code: code","Chain, Callable"
+LLMCheckerChain,"llm: BaseLanguageModel, code: code","Chain, Callable"
+LLMMathChain,"llm: BaseLanguageModel, llm_chain: LLMChain, memory: BaseMemory, code: code, input_key: str, output_key: str","LLMMathChain, Callable, Chain"
+MidJourneyPromptChain,"llm: BaseLanguageModel, memory: BaseChatMemory",
+PromptRunner,"llm: BaseLLM, prompt: PromptTemplate, code: code, inputs: dict",Document
+RetrievalQA,"combine_documents_chain: BaseCombineDocumentsChain, memory: BaseMemory, retriever: BaseRetriever, code: code, input_key: str, output_key: str, return_source_documents: bool","BaseRetrievalQA, Callable"
+SeriesCharacterChain,"llm: BaseLanguageModel, character: str, series: str",
+SQLDatabaseChain,"db: SQLDatabase, llm: BaseLanguageModel, prompt: BasePromptTemplate, code: code","Chain, Callable, SQLDatabaseChain"
+TimeTravelGuideChain,"llm: BaseLanguageModel, memory: BaseChatMemory",
+CustomComponent,"param: Data, code: code",Data
+AmazonBedrockEmbeddings,"code: code, credentials_profile_name: str, endpoint_url: str, model_id: str, region_name: str",Embeddings
+AzureOpenAIEmbeddings,"api_key: str, api_version: str, azure_deployment: str, azure_endpoint: str, code: code",Embeddings
+CohereEmbeddings,"code: code, cohere_api_key: str, max_retries: int, model: str, request_timeout: float, truncate: str, user_agent: str",CohereEmbeddings
+HuggingFaceEmbeddings,"cache_folder: str, code: code, encode_kwargs: dict, model_kwargs: dict, model_name: str, multi_process: bool",HuggingFaceEmbeddings
+HuggingFaceInferenceAPIEmbeddings,"api_key: str, api_url: str, cache_folder: str, code: code, encode_kwargs: dict, model_kwargs: dict, model_name: str, multi_process: bool",HuggingFaceInferenceAPIEmbeddings
+OllamaEmbeddings,"base_url: str, code: code, model: str, temperature: float",Embeddings
+OpenAIEmbeddings,"allowed_special: str, chunk_size: int, client: Any, code: code, default_headers: dict, default_query: NestedDict, deployment: str, disallowed_special: str, embedding_ctx_length: int, max_retries: int, model: str, model_kwargs: NestedDict, openai_api_base: str, openai_api_key: str, openai_api_type: str, openai_api_version: str, openai_organization: str, openai_proxy: str, request_timeout: float, show_progress_bar: bool, skip_empty: bool, tiktoken_enable: bool, tiktoken_model_name: str","OpenAIEmbeddings, Callable"
+LLMGuardInputScanner,"code: code, config: dict, name: str, raise_error: bool",Data
+LLMGuardOutputScanner,"code: code, config: dict, name: str, raise_error: bool",Data
+LLMGuardWrapper,"input_scanners: Data, llm: BaseLanguageModel, output_scanners: Data, code: code, raise_error: bool",BaseLanguageModel
+AmazonBedrock,"access_key_id: str, access_key_secret: str, cache: bool, code: code, model_id: str, model_kwargs: dict, region_name: str, stream: bool",BaseLanguageModel
+Anthropic,"anthropic_api_key: str, anthropic_api_url: str, code: code, model_kwargs: NestedDict, temperature: float",BaseLanguageModel
+AnthropicLLM,"anthropic_api_key: str, api_endpoint: str, code: code, max_tokens: int, model: str, stream: bool, temperature: float",BaseLanguageModel
+AzureChatOpenAI,"api_key: str, api_version: str, azure_deployment: str, azure_endpoint: str, code: code, max_tokens: int, model: str, temperature: float",BaseLanguageModel
+ChatAnthropic,"anthropic_api_key: str, code: code, max_tokens: int, model_kwargs: dict, model_name: str, temperature: float, top_k: int, top_p: float","BaseLanguageModel, Callable"
+ChatLiteLLM,"api_key: str, code: code, max_retries: int, max_tokens: int, model: str, model_kwargs: dict, n: int, streaming: bool, temperature: float, top_k: int, top_p: float, verbose: bool","BaseLanguageModel, Callable"
+ChatOllamaEndpoint,"metadata: Dict[str, Any], stop: list, tags: list, base_url: str, cache: bool, code: code, format: str, mirostat: str, mirostat_eta: float, mirostat_tau: float, model: str, num_ctx: int, num_gpu: int, num_thread: int, repeat_last_n: int, repeat_penalty: float, system: str, temperature: float, template: str, tfs_z: float, timeout: int, top_k: int, top_p: float, verbose: bool",BaseChatModel
+ChatOpenAI,"code: code, max_tokens: int, model_kwargs: NestedDict, model_name: str, openai_api_base: str, openai_api_key: str, temperature: float","BaseLanguageModel, BaseLLM"
+ChatVertexAI,"credentials: file, examples: BaseMessage, code: code, location: str, max_output_tokens: int, model_name: str, project: str, temperature: float, top_k: int, top_p: float, verbose: bool","BaseLanguageModel, BaseLLM"
+Cohere,"code: code, cohere_api_key: str, max_tokens: int, temperature: float",BaseLanguageModel
+CTransformers,"model_file: file, code: code, config: dict, model: str, model_type: str",CTransformers
+GoogleGenerativeAI,"code: code, google_api_key: str, max_output_tokens: int, model: str, n: int, temperature: float, top_k: int, top_p: float",BaseLanguageModel
+HuggingFaceEndpoints,"code: code, endpoint_url: str, huggingfacehub_api_token: str, model_kwargs: code, task: str",BaseLLM
+HuggingFaceHub,"cache: BaseCache, callbacks: langchain_core.callbacks.base.BaseCallbackHandler, custom_get_token_ids: Callable[[str], int], client: Any, huggingfacehub_api_token: str, metadata: dict, model_kwargs: dict, name: str, repo_id: str, tags: str, task: str, verbose: bool",
+LlamaCpp,"metadata: Dict, model_kwargs: Dict, model_path: file, cache: bool, client: Any, code: code, echo: bool, f16_kv: bool, grammar: str, grammar_path: str, last_n_tokens_size: int, logits_all: bool, logprobs: int, lora_base: str, lora_path: str, max_tokens: int, n_batch: int, n_ctx: int, n_gpu_layers: int, n_parts: int, n_threads: int, repeat_penalty: float, rope_freq_base: float, rope_freq_scale: float, seed: int, stop: str, streaming: bool, suffix: str, tags: str, temperature: float, top_k: int, top_p: float, use_mlock: bool, use_mmap: bool, verbose: bool, vocab_only: bool",LlamaCpp
+OllamaLLM,"base_url: str, code: code, mirostat: str, mirostat_eta: float, mirostat_tau: float, model: str, num_ctx: int, num_gpu: int, num_thread: int, repeat_last_n: int, repeat_penalty: float, stop: str, temperature: float, tfs_z: float, top_k: int, top_p: int",BaseLLM
+OpenAI,"cache: BaseCache, callbacks: langchain_core.callbacks.base.BaseCallbackHandler, custom_get_token_ids: Callable[[str], int], allowed_special: str, async_client: Any, batch_size: int, best_of: int, client: Any, default_headers: dict, default_query: dict, disallowed_special: str, frequency_penalty: float, http_client: Any, logit_bias: dict, max_retries: int, max_tokens: int, metadata: dict, model_kwargs: dict, model_name: str, n: int, name: str, openai_api_base: str, openai_api_key: str, openai_organization: str, openai_proxy: str, presence_penalty: float, request_timeout: float, streaming: bool, tags: str, temperature: float, tiktoken_model_name: str, top_p: float, verbose: bool",
+BaiduQianfanChatEndpoints,"code: code, endpoint: str, model: str, penalty_score: float, qianfan_ak: str, qianfan_sk: str, temperature: float, top_p: float",BaseLLM
+BaiduQianfanLLMEndpoints,"code: code, endpoint: str, model: str, penalty_score: float, qianfan_ak: str, qianfan_sk: str, temperature: float, top_p: float",BaseLLM
+VertexAI,"credentials: file, code: code, location: str, max_output_tokens: int, max_retries: int, metadata: dict, model_name: str, n: int, name: str, project: str, request_parallelism: int, streaming: bool, temperature: float, top_k: int, top_p: float, tuned_model_name: str, verbose: bool","BaseLLM, Callable"
+AirbyteJSONLoader,"file_path: file, metadata: dict",Document
+AZLyricsLoader,"metadata: dict, web_path: str",Document
+BSHTMLLoader,"file_path: file, metadata: dict",Document
+CollegeConfidentialLoader,"metadata: dict, web_path: str",Document
+CoNLLULoader,"file_path: file, metadata: dict",Document
+CSVLoader,"file_path: file, metadata: dict",Document
+DirectoryLoader,"code: code, glob: str, load_hidden: bool, max_concurrency: int, path: str, recursive: bool, silent_errors: bool, use_multithreading: bool",Document
+EverNoteLoader,"file_path: file, metadata: dict",Document
+FacebookChatLoader,"file_path: file, metadata: dict",Document
+FileLoader,"file_path: file, code: code, loader: str",Document
+GitbookLoader,"metadata: dict, web_page: str",Document
+GitLoader,"branch: str, clone_url: str, file_filter: str, metadata: dict, repo_path: str",Document
+GutenbergLoader,"metadata: dict, web_path: str",Document
+HNLoader,"metadata: dict, web_path: str",Document
+IFixitLoader,"metadata: dict, web_path: str",Document
+IMSDbLoader,"metadata: dict, web_path: str",Document
+NotionDirectoryLoader,"metadata: dict, path: str",Document
+PyPDFDirectoryLoader,"metadata: dict, path: str",Document
+PyPDFLoader,"file_path: file, metadata: dict",Document
+ReadTheDocsLoader,"metadata: dict, path: str",Document
+SlackDirectoryLoader,"zip_path: file, metadata: dict, workspace_url: str",Document
+SRTLoader,"file_path: file, metadata: dict",Document
+TextLoader,"file_path: file, metadata: dict",Document
+UnstructuredEmailLoader,"file_path: file, metadata: dict",Document
+UnstructuredHTMLLoader,"file_path: file, metadata: dict",Document
+UnstructuredMarkdownLoader,"file_path: file, metadata: dict",Document
+UnstructuredPowerPointLoader,"file_path: file, metadata: dict",Document
+UnstructuredWordDocumentLoader,"file_path: file, metadata: dict",Document
+UrlLoader,"code: code, loader: str, web_path: str",Document
+WebBaseLoader,"metadata: dict, web_path: str",Document
+ResponseSchema,"description: str, name: str, type: str",
+StructuredOutputParser,response_schemas: ResponseSchema,
+PreapprovedEmbeddings,"code: code, model: str",Embeddings
+PreapprovedLLM,"code: code, max_tokens: int, model: str, temperature: float",BaseLanguageModel
