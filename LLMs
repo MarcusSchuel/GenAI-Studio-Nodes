@@ -1,0 +1,98 @@
+# Dokumentation der LLMs
+
+## Einleitung
+Diese Dokumentation beschreibt die **Large Language Models (LLMs)** für das LangChain-Framework, ihre Eigenschaften, Konfigurationen und deren Verwendung.
+
+## 1. AmazonBedrock
+**Beschreibung:** Ein LLM-Modell, das über Amazon Bedrock bereitgestellt wird.
+
+### Eigenschaften:
+- **`model_id`** (String, erforderlich): Unterstützte Modelle, darunter:
+  - `amazon.titan-text-express-v1`
+  - `anthropic.claude-3-sonnet-20240229-v1:0`
+  - `mistral.mistral-7b-instruct-v0:2`
+- **`access_key_id`** (String, optional): AWS-Zugangsschlüssel.
+- **`access_key_secret`** (String, optional): Geheimschlüssel für den Zugriff.
+- **`region_name`** (String, erforderlich): Standard `us-east-1`.
+- **`cache`** (Boolean, optional): Gibt an, ob ein Cache verwendet wird.
+- **`code`** (Python-Code, erforderlich): Implementierung des Modells.
+
+---
+
+## 2. Anthropic
+**Beschreibung:** Eine Implementierung für **Anthropic LLMs**.
+
+### Eigenschaften:
+- **`anthropic_api_key`** (String, erforderlich): API-Schlüssel für Anthropic.
+- **`anthropic_api_url`** (String, erforderlich): Endpunkt der Anthropic API.
+- **`model_kwargs`** (Dictionary, optional): Zusätzliche Parameter für das Modell.
+- **`temperature`** (Float, optional): Steuerung der Kreativität.
+- **`code`** (Python-Code, erforderlich): Implementierung des Modells.
+
+---
+
+## 3. AzureChatOpenAI
+**Beschreibung:** Ein OpenAI-Modell, das über **Azure** bereitgestellt wird.
+
+### Eigenschaften:
+- **`api_key`** (String, erforderlich): API-Schlüssel für Azure OpenAI.
+- **`azure_endpoint`** (String, erforderlich): Endpunkt der Azure-API.
+- **`azure_deployment`** (String, erforderlich): Name der Bereitstellung.
+- **`api_version`** (String, erforderlich): Unterstützte Versionen:
+  - `2023-12-01-preview`
+  - `2023-09-01-preview`
+- **`temperature`** (Float, optional): Standardwert 0.7.
+- **`max_tokens`** (Integer, optional): Standardwert 1000.
+- **`code`** (Python-Code, erforderlich): Implementierung des Azure OpenAI-Modells.
+
+---
+
+## 4. ChatOpenAI
+**Beschreibung:** Standard-OpenAI-LLM für Chat-Anwendungen.
+
+### Eigenschaften:
+- **`openai_api_key`** (String, erforderlich): OpenAI-API-Schlüssel.
+- **`model_name`** (String, erforderlich): Mögliche Werte:
+  - `gpt-4-turbo-preview`
+  - `gpt-4-0125-preview`
+  - `gpt-3.5-turbo-0125`
+- **`openai_api_base`** (String, optional): Standard `https://api.openai.com/v1`.
+- **`temperature`** (Float, optional): Standardwert 0.7.
+- **`max_tokens`** (Integer, optional): Standardwert 256.
+- **`code`** (Python-Code, erforderlich): Implementierung des Modells.
+
+---
+
+## 5. ChatOllama
+**Beschreibung:** Ein LLM für lokale Chat-Anwendungen mit **Ollama**.
+
+### Eigenschaften:
+- **`model`** (String, erforderlich): Standard `llama2`.
+- **`base_url`** (String, erforderlich): Standard `http://localhost:11434`.
+- **`temperature`** (Float, optional): Standardwert 0.8.
+- **`cache`** (Boolean, optional): Steuerung des Caching.
+- **`top_k`** (Integer, optional): Begrenzung der Token-Auswahl.
+- **`top_p`** (Float, optional): Anpassung der Wahrscheinlichkeitsverteilung.
+- **`code`** (Python-Code, erforderlich): Implementierung des Modells.
+
+---
+
+## 6. ChatVertexAI
+**Beschreibung:** Ein LLM für Google Vertex AI.
+
+### Eigenschaften:
+- **`credentials`** (Datei, optional): JSON-Datei mit Anmeldeinformationen.
+- **`project`** (String, erforderlich): Google-Projekt-ID.
+- **`location`** (String, erforderlich): Standard `us-central1`.
+- **`max_output_tokens`** (Integer, optional): Standardwert 128.
+- **`temperature`** (Float, optional): Standardwert 0.0.
+- **`top_k`** (Integer, optional): Standardwert 40.
+- **`top_p`** (Float, optional): Standardwert 0.95.
+- **`verbose`** (Boolean, optional): Aktiviert detaillierte Logs.
+- **`code`** (Python-Code, erforderlich): Implementierung des Modells.
+
+---
+
+## Fazit
+Diese Liste enthält eine Sammlung von **LLMs**, die in verschiedenen Cloud- und lokalen Umgebungen eingesetzt werden können. Zu den unterstützten Anbieter gehören **Amazon, Anthropic, OpenAI (Azure/OpenAI), Google Vertex AI und Ollama**. Jedes Modell kann flexibel konfiguriert und an spezifische Anwendungsfälle angepasst werden.
+
