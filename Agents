@@ -1,0 +1,120 @@
+# Dokumentation der Agenten
+
+## Einleitung
+Diese Dokumentation beschreibt die **LangChain-Agenten**, ihre Eigenschaften, Konfigurationen und deren Verwendung.
+
+## 1. AgentInitializer
+**Beschreibung:** Initialisiert einen LangChain-Agenten mit verschiedenen Typen und Einstellungen.
+
+### Eigenschaften:
+- **`llm`** (BaseLanguageModel, erforderlich): Das verwendete Sprachmodell.
+- **`memory`** (BaseChatMemory, optional): Speichert den Chat-Verlauf.
+- **`tools`** (Liste von Tools, erforderlich): Enthält die verwendeten Werkzeuge.
+- **`agent`** (String, erforderlich): Der Typ des Agenten. Mögliche Werte:
+  - `zero-shot-react-description`
+  - `react-docstore`
+  - `self-ask-with-search`
+  - `conversational-react-description`
+  - `chat-zero-shot-react-description`
+  - `chat-conversational-react-description`
+  - `structured-chat-zero-shot-react-description`
+  - `openai-functions`
+  - `openai-multi-functions`
+  - `JsonAgent`
+  - `CSVAgent`
+  - `VectorStoreAgent`
+  - `VectorStoreRouterAgent`
+  - `SQLAgent`
+- **`max_iterations`** (Integer, erforderlich): Maximale Anzahl an Iterationen.
+- **`code`** (Python-Code, erforderlich): Implementierung der Agentenerstellung.
+
+---
+
+## 2. CSVAgent
+**Beschreibung:** Agent zur Verarbeitung von CSV-Dateien.
+
+### Eigenschaften:
+- **`llm`** (BaseLanguageModel, erforderlich): Das verwendete Sprachmodell.
+- **`path`** (String, erforderlich): Pfad zur CSV-Datei.
+- **`code`** (Python-Code, erforderlich): Implementierung des CSV-Agenten.
+
+---
+
+## 3. JsonAgent
+**Beschreibung:** Agent zur Verarbeitung von JSON-Daten.
+
+### Eigenschaften:
+- **`llm`** (BaseLanguageModel, erforderlich): Das verwendete Sprachmodell.
+- **`toolkit`** (JsonToolkit, erforderlich): Werkzeug zur JSON-Verarbeitung.
+- **`code`** (Python-Code, erforderlich): Implementierung des JSON-Agenten.
+
+---
+
+## 4. OpenAIConversationalAgent
+**Beschreibung:** Konversationsagent mit OpenAI-API-Unterstützung.
+
+### Eigenschaften:
+- **`memory`** (BaseMemory, optional): Speichert den Chat-Verlauf.
+- **`system_message`** (SystemMessagePromptTemplate, optional): Vordefinierte Systemnachricht.
+- **`tools`** (Liste von Tools, erforderlich): Enthält die verwendeten Werkzeuge.
+- **`max_token_limit`** (Integer, erforderlich): Maximale Anzahl an Tokens.
+- **`model_name`** (String, erforderlich): Name des OpenAI-Modells. Optionen:
+  - `gpt-4-turbo-preview`
+  - `gpt-4-0125-preview`
+  - `gpt-4-1106-preview`
+  - `gpt-4-vision-preview`
+  - `gpt-3.5-turbo-0125`
+  - `gpt-3.5-turbo-1106`
+- **`openai_api_key`** (String, erforderlich): API-Schlüssel für OpenAI.
+- **`temperature`** (Float, erforderlich): Temperaturwert für die Modellantworten (0–2).
+- **`code`** (Python-Code, erforderlich): Implementierung des Konversationsagenten.
+
+---
+
+## 5. SQLAgent
+**Beschreibung:** Agent zur Abfrage und Verarbeitung von SQL-Datenbanken.
+
+### Eigenschaften:
+- **`llm`** (BaseLanguageModel, erforderlich): Das verwendete Sprachmodell.
+- **`database_uri`** (String, erforderlich): URI der Datenbank.
+- **`verbose`** (Boolean, optional): Gibt an, ob detaillierte Logs ausgegeben werden.
+- **`code`** (Python-Code, erforderlich): Implementierung des SQL-Agenten.
+
+---
+
+## 6. VectorStoreAgent
+**Beschreibung:** Agent zur Arbeit mit Vektorspeichern für semantische Suche.
+
+### Eigenschaften:
+- **`llm`** (BaseLanguageModel, erforderlich): Das verwendete Sprachmodell.
+- **`vector_store_toolkit`** (VectorStoreToolkit, erforderlich): Vektorspeicher-Toolkit.
+- **`code`** (Python-Code, erforderlich): Implementierung des VectorStore-Agenten.
+
+---
+
+## 7. VectorStoreRouterAgent
+**Beschreibung:** Agent zur Steuerung und Routing zwischen verschiedenen Vektorspeichern.
+
+### Eigenschaften:
+- **`llm`** (BaseLanguageModel, erforderlich): Das verwendete Sprachmodell.
+- **`vectorstoreroutertoolkit`** (VectorStoreRouterToolkit, erforderlich): Toolkit für das Routing.
+- **`code`** (Python-Code, erforderlich): Implementierung des Router-Agenten.
+
+---
+
+## 8. ZeroShotAgent
+**Beschreibung:** Agent, der ohne vorheriges Training arbeitet (Zero-Shot-Strategie).
+
+### Eigenschaften:
+- **`llm`** (BaseLanguageModel, erforderlich): Das verwendete Sprachmodell.
+- **`tools`** (Liste von Tools, erforderlich): Enthält die verwendeten Werkzeuge.
+- **`prefix`** (String, optional): Einführungstext für den Agenten.
+- **`suffix`** (String, optional): Abschlusstext für den Agenten.
+- **`format_instructions`** (String, optional): Format für Agentenantworten.
+- **`code`** (Python-Code, erforderlich): Implementierung des ZeroShot-Agenten.
+
+---
+
+## Fazit
+Diese Liste enthält eine Vielzahl von **LangChain-Agenten**, die für unterschiedliche Anwendungsfälle konzipiert sind – von **Datenanalyse (CSV, JSON, SQL)** bis hin zu **Konversationsagenten mit OpenAI-Integration**. Die Agenten sind hochgradig konfigurierbar und bieten verschiedene **Werkzeuge, Speicherlösungen und KI-Modelle**, die in der jeweiligen Konfiguration angepasst werden können.
+
