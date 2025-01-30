@@ -1,0 +1,31 @@
+# Dokumentation der Output Parsers
+
+## Einleitung
+Diese Dokumentation beschreibt die **Output Parsers** für das LangChain-Framework, ihre Eigenschaften, Konfigurationen und deren Verwendung.
+
+## 1. ResponseSchema
+**Beschreibung:** Ein Schema für die strukturierte Ausgabe eines Parsers.
+
+### Eigenschaften:
+- **`name`** (String, erforderlich): Der Name des Feldes im Antwortschema.
+- **`description`** (String, erforderlich): Beschreibung des Feldes.
+- **`type`** (String, optional): Datentyp des Feldes (Standard: `string`).
+- **[Dokumentation](https://python.langchain.com/docs/modules/model_io/output_parsers/structured)**
+
+---
+
+## 2. StructuredOutputParser
+**Beschreibung:** Ein Parser zur Verarbeitung von strukturierten Ausgaben.
+
+### Eigenschaften:
+- **`response_schemas`** (Liste von `ResponseSchema`, erforderlich): Enthält die definierten Antwortschemata.
+- **Basisklassen:**
+  - `BaseOutputParser`
+  - `BaseLLMOutputParser`
+  - `StructuredOutputParser`
+- **[Dokumentation](https://python.langchain.com/docs/modules/model_io/output_parsers/structured)**
+
+---
+
+## Fazit
+Diese Liste enthält zwei **strukturierte Output Parsers** zur Verarbeitung von modellgenerierten Antworten. Das `ResponseSchema` definiert die erwarteten Felder, während der `StructuredOutputParser` zur Anwendung kommt, um die LLM-Antworten gemäß diesen Vorgaben zu formatieren.
