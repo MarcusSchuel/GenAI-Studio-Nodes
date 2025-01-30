@@ -1,0 +1,78 @@
+# Dokumentation der Guardrails
+
+## Einleitung
+Diese Dokumentation beschreibt die **LLM Guardrails-Komponenten** für das LangChain-Framework, ihre Eigenschaften, Konfigurationen und deren Verwendung.
+
+## 1. LLMGuardInputScanner
+**Beschreibung:** Eine Komponente zur Analyse und Filterung von Eingaben für LLMs.
+
+### Eigenschaften:
+- **`name`** (String, erforderlich): Der Name des Scanners. Optionen:
+  - `Anonymize`
+  - `BanCode`
+  - `BanCompetitors`
+  - `BanSubstrings`
+  - `BanTopics`
+  - `Code`
+  - `Gibberish`
+  - `InvisibleText`
+  - `Language`
+  - `PromptInjection`
+  - `Regex`
+  - `Secrets`
+  - `Sentiment`
+  - `TokenLimit`
+  - `Toxicity`
+- **`config`** (Dictionary, optional): Konfiguration des Scanners.
+- **`raise_error`** (Boolean, optional): Gibt an, ob ein Fehler ausgelöst werden soll, wenn der Scanner fehlschlägt.
+- **`code`** (Python-Code, erforderlich): Implementierung des Input Scanners.
+
+---
+
+## 2. LLMGuardOutputScanner
+**Beschreibung:** Eine Komponente zur Analyse und Filterung von LLM-Ausgaben.
+
+### Eigenschaften:
+- **`name`** (String, erforderlich): Der Name des Scanners. Optionen:
+  - `BanCode`
+  - `BanCompetitors`
+  - `BanSubstrings`
+  - `BanTopics`
+  - `Bias`
+  - `Code`
+  - `Deanonymize`
+  - `FactualConsistency`
+  - `Gibberish`
+  - `JSON`
+  - `Language`
+  - `LanguageSame`
+  - `MaliciousURLs`
+  - `NoRefusal`
+  - `ReadingTime`
+  - `Regex`
+  - `Relevance`
+  - `Sensitive`
+  - `Sentiment`
+  - `Toxicity`
+  - `URLReachability`
+- **`config`** (Dictionary, optional): Konfiguration des Scanners.
+- **`raise_error`** (Boolean, optional): Gibt an, ob ein Fehler ausgelöst werden soll, wenn der Scanner fehlschlägt.
+- **`code`** (Python-Code, erforderlich): Implementierung des Output Scanners.
+
+---
+
+## 3. LLMGuardWrapper
+**Beschreibung:** Eine Komponente zur Integration und Verwaltung von **LLMGuard Input und Output Scannern** mit einem LLM-Modell.
+
+### Eigenschaften:
+- **`llm`** (BaseLanguageModel, optional): Das verwendete LLM.
+- **`input_scanners`** (Liste von Scannern, optional): Eingabescanner für das LLM.
+- **`output_scanners`** (Liste von Scannern, optional): Ausgabescanner für das LLM.
+- **`raise_error`** (Boolean, optional): Gibt an, ob ein Fehler ausgelöst werden soll, wenn eine Validierung fehlschlägt.
+- **`code`** (Python-Code, erforderlich): Implementierung des Wrappers.
+
+---
+
+## Fazit
+Diese Liste enthält verschiedene **LLMGuard-Komponenten**, die **Eingaben und Ausgaben von KI-Modellen überwachen und filtern**. Dadurch können Sicherheitsrichtlinien implementiert und **unerwünschte Inhalte** vermieden werden. Der **LLMGuardWrapper** ermöglicht die Kombination mehrerer Scanner und die direkte Anbindung an ein LLM-Modell.
+
