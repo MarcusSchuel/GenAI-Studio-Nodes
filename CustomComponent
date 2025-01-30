@@ -1,0 +1,39 @@
+# Dokumentation der Custom Component
+
+## Einleitung
+Diese Dokumentation beschreibt die **Custom Component** für das LangFlow-Framework, ihre Eigenschaften, Konfiguration und Verwendung.
+
+## 1. CustomComponent
+**Beschreibung:** Eine benutzerdefinierte Komponente, die Daten verarbeitet und weitergibt.
+
+### Eigenschaften:
+- **`param`** (Data, erforderlich): Ein allgemeiner Parameter für die Komponente.
+- **`code`** (Python-Code, erforderlich): Die Implementierung der Custom Component.
+- **`_type`** (String, erforderlich): Interner Identifier für die Komponente.
+
+### Technische Details:
+- Die Komponente ist als **`CustomComponent`** im LangFlow-Framework definiert.
+- Die Konfiguration wird in der Methode `build_config` festgelegt.
+- Die Methode `build` nimmt einen Parameter (`param`) entgegen und gibt ihn unverändert zurück.
+
+### Implementierung (Python-Code):
+```python
+from langflow import CustomComponent
+from langflow.field_typing import Data
+
+class Component(CustomComponent):
+    documentation: str = "http://docs.langflow.org/components/custom"
+
+    def build_config(self):
+        return {"param": {"display_name": "Parameter"}}
+
+    def build(self, param: Data) -> Data:
+        return param
+```
+
+### Dokumentation:
+Die Dokumentation zur Custom Component ist verfügbar unter: [LangFlow Custom Components](http://docs.langflow.org/components/custom)
+
+## Fazit
+Diese **Custom Component** dient als einfache Schnittstelle für den Datendurchfluss innerhalb von LangFlow. Sie kann als Grundbaustein für weiterführende **benutzerdefinierte Komponenten** verwendet werden. Durch die Bereitstellung eines generischen Parameters ermöglicht sie eine vielseitige Anwendung in verschiedenen Szenarien.
+
