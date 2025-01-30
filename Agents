@@ -25,8 +25,11 @@ Diese Dokumentation beschreibt die **LangChain-Agenten**, ihre Eigenschaften, Ko
   - `VectorStoreAgent`
   - `VectorStoreRouterAgent`
   - `SQLAgent`
-- **`max_iterations`** (Integer, erforderlich): Maximale Anzahl an Iterationen.
+- **`max_iterations`** (Integer, erforderlich, Standard: `10`): Maximale Anzahl an Iterationen.
 - **`code`** (Python-Code, erforderlich): Implementierung der Agentenerstellung.
+- **`_type`** (String, optional): Gibt den Typ der Komponente an (`CustomComponent`).
+
+[Weitere Informationen](https://python.langchain.com/docs/modules/agents/agent_types/)
 
 ---
 
@@ -35,8 +38,11 @@ Diese Dokumentation beschreibt die **LangChain-Agenten**, ihre Eigenschaften, Ko
 
 ### Eigenschaften:
 - **`llm`** (BaseLanguageModel, erforderlich): Das verwendete Sprachmodell.
-- **`path`** (String, erforderlich): Pfad zur CSV-Datei.
+- **`path`** (String, erforderlich, nur `.csv` erlaubt): Pfad zur CSV-Datei.
 - **`code`** (Python-Code, erforderlich): Implementierung des CSV-Agenten.
+- **`_type`** (String, optional): Gibt den Typ der Komponente an (`CustomComponent`).
+
+[Weitere Informationen](https://python.langchain.com/docs/modules/agents/toolkits/csv)
 
 ---
 
@@ -47,6 +53,7 @@ Diese Dokumentation beschreibt die **LangChain-Agenten**, ihre Eigenschaften, Ko
 - **`llm`** (BaseLanguageModel, erforderlich): Das verwendete Sprachmodell.
 - **`toolkit`** (JsonToolkit, erforderlich): Werkzeug zur JSON-Verarbeitung.
 - **`code`** (Python-Code, erforderlich): Implementierung des JSON-Agenten.
+- **`_type`** (String, optional): Gibt den Typ der Komponente an (`CustomComponent`).
 
 ---
 
@@ -57,7 +64,7 @@ Diese Dokumentation beschreibt die **LangChain-Agenten**, ihre Eigenschaften, Ko
 - **`memory`** (BaseMemory, optional): Speichert den Chat-Verlauf.
 - **`system_message`** (SystemMessagePromptTemplate, optional): Vordefinierte Systemnachricht.
 - **`tools`** (Liste von Tools, erforderlich): Enthält die verwendeten Werkzeuge.
-- **`max_token_limit`** (Integer, erforderlich): Maximale Anzahl an Tokens.
+- **`max_token_limit`** (Integer, erforderlich, Standard: `2000`): Maximale Anzahl an Tokens.
 - **`model_name`** (String, erforderlich): Name des OpenAI-Modells. Optionen:
   - `gpt-4-turbo-preview`
   - `gpt-4-0125-preview`
@@ -66,8 +73,10 @@ Diese Dokumentation beschreibt die **LangChain-Agenten**, ihre Eigenschaften, Ko
   - `gpt-3.5-turbo-0125`
   - `gpt-3.5-turbo-1106`
 - **`openai_api_key`** (String, erforderlich): API-Schlüssel für OpenAI.
-- **`temperature`** (Float, erforderlich): Temperaturwert für die Modellantworten (0–2).
+- **`openai_api_base`** (String, optional): Basis-URL der OpenAI-API.
+- **`temperature`** (Float, erforderlich, Standard: `0.2`, Bereich: `0–2`, Schrittweite: `0.1`): Temperaturwert für die Modellantworten.
 - **`code`** (Python-Code, erforderlich): Implementierung des Konversationsagenten.
+- **`_type`** (String, optional): Gibt den Typ der Komponente an (`CustomComponent`).
 
 ---
 
@@ -77,8 +86,9 @@ Diese Dokumentation beschreibt die **LangChain-Agenten**, ihre Eigenschaften, Ko
 ### Eigenschaften:
 - **`llm`** (BaseLanguageModel, erforderlich): Das verwendete Sprachmodell.
 - **`database_uri`** (String, erforderlich): URI der Datenbank.
-- **`verbose`** (Boolean, optional): Gibt an, ob detaillierte Logs ausgegeben werden.
+- **`verbose`** (Boolean, optional, Standard: `False`): Gibt an, ob detaillierte Logs ausgegeben werden.
 - **`code`** (Python-Code, erforderlich): Implementierung des SQL-Agenten.
+- **`_type`** (String, optional): Gibt den Typ der Komponente an (`CustomComponent`).
 
 ---
 
@@ -89,6 +99,7 @@ Diese Dokumentation beschreibt die **LangChain-Agenten**, ihre Eigenschaften, Ko
 - **`llm`** (BaseLanguageModel, erforderlich): Das verwendete Sprachmodell.
 - **`vector_store_toolkit`** (VectorStoreToolkit, erforderlich): Vektorspeicher-Toolkit.
 - **`code`** (Python-Code, erforderlich): Implementierung des VectorStore-Agenten.
+- **`_type`** (String, optional): Gibt den Typ der Komponente an (`CustomComponent`).
 
 ---
 
@@ -99,6 +110,7 @@ Diese Dokumentation beschreibt die **LangChain-Agenten**, ihre Eigenschaften, Ko
 - **`llm`** (BaseLanguageModel, erforderlich): Das verwendete Sprachmodell.
 - **`vectorstoreroutertoolkit`** (VectorStoreRouterToolkit, erforderlich): Toolkit für das Routing.
 - **`code`** (Python-Code, erforderlich): Implementierung des Router-Agenten.
+- **`_type`** (String, optional): Gibt den Typ der Komponente an (`CustomComponent`).
 
 ---
 
@@ -108,10 +120,14 @@ Diese Dokumentation beschreibt die **LangChain-Agenten**, ihre Eigenschaften, Ko
 ### Eigenschaften:
 - **`llm`** (BaseLanguageModel, erforderlich): Das verwendete Sprachmodell.
 - **`tools`** (Liste von Tools, erforderlich): Enthält die verwendeten Werkzeuge.
-- **`prefix`** (String, optional): Einführungstext für den Agenten.
-- **`suffix`** (String, optional): Abschlusstext für den Agenten.
+- **`prefix`** (String, optional, Standard: *"Answer the following questions..."*): Einführungstext für den Agenten.
+- **`suffix`** (String, optional, Standard: *"Begin! Question: {input} Thought:{agent_scratchpad}"*): Abschlusstext für den Agenten.
 - **`format_instructions`** (String, optional): Format für Agentenantworten.
+- **`callback_manager`** (BaseCallbackManager, optional): Callback-Manager.
+- **`output_parser`** (AgentOutputParser, optional): Parser für Agentenantworten.
+- **`input_variables`** (Liste von Strings, optional): Variablen für die Eingabe.
 - **`code`** (Python-Code, erforderlich): Implementierung des ZeroShot-Agenten.
+- **`_type`** (String, optional): Gibt den Typ der Komponente an (`ZeroShotAgent`).
 
 ---
 
