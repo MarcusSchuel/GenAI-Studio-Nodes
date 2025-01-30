@@ -1,0 +1,134 @@
+# Dokumentation der Chains
+
+## Einleitung
+Diese Dokumentation beschreibt die **LangChain-Chains**, ihre Eigenschaften, Konfigurationen und deren Verwendung.
+
+## 1. CombineDocsChain
+**Beschreibung:** Eine Chain, die Dokumente kombiniert und für Question-Answering-Prozesse nutzt.
+
+### Eigenschaften:
+- **`llm`** (BaseLanguageModel, erforderlich): Das verwendete Sprachmodell.
+- **`chain_type`** (String, erforderlich): Der Typ der Chain. Optionen:
+  - `stuff`
+  - `map_reduce`
+  - `map_rerank`
+  - `refine`
+- **`_type`** (String, erforderlich): Interner Identifier für die Chain.
+
+---
+
+## 2. ConversationalRetrievalChain
+**Beschreibung:** Eine Chain für kontextbezogene Dokumentensuche in einem Dialog.
+
+### Eigenschaften:
+- **`callbacks`** (Callbacks, optional): Unterstützt Rückrufe für Verarbeitungsschritte.
+- **`condense_question_llm`** (BaseLanguageModel, optional): LLM zur Umformulierung von Fragen.
+- **`condense_question_prompt`** (BasePromptTemplate, optional): Vorlage zur Umformulierung von Fragen.
+- **`llm`** (BaseLanguageModel, erforderlich): Das verwendete Sprachmodell.
+- **`memory`** (BaseChatMemory, erforderlich): Speichert den Chat-Verlauf.
+- **`retriever`** (BaseRetriever, erforderlich): Der verwendete Retriever für Dokumentensuche.
+- **`chain_type`** (String, erforderlich): Der Chain-Typ. Optionen:
+  - `stuff`
+  - `map_reduce`
+  - `map_rerank`
+  - `refine`
+- **`return_source_documents`** (Boolean, optional): Gibt an, ob Quell-Dokumente zurückgegeben werden.
+
+---
+
+## 3. ConversationChain
+**Beschreibung:** Eine Chain für die Konversation mit speicherbarem Kontext.
+
+### Eigenschaften:
+- **`llm`** (BaseLanguageModel, erforderlich): Das verwendete Sprachmodell.
+- **`memory`** (BaseMemory, optional): Speichert den Gesprächsverlauf.
+- **`code`** (Python-Code, erforderlich): Implementierung der ConversationChain.
+
+---
+
+## 4. LLMCheckerChain
+**Beschreibung:** Eine Chain zur Validierung und Überprüfung von LLM-Ausgaben.
+
+### Eigenschaften:
+- **`llm`** (BaseLanguageModel, erforderlich): Das verwendete Sprachmodell.
+- **`code`** (Python-Code, erforderlich): Implementierung des LLM-Checkers.
+
+---
+
+## 5. LLMMathChain
+**Beschreibung:** Eine Chain zur mathematischen Berechnung mit LLM-Unterstützung.
+
+### Eigenschaften:
+- **`llm`** (BaseLanguageModel, erforderlich): Das verwendete Sprachmodell.
+- **`llm_chain`** (LLMChain, erforderlich): Die verwendete LLM-Verarbeitungskette.
+- **`input_key`** (String, erforderlich): Name des Eingabewerts.
+- **`output_key`** (String, erforderlich): Name des Ausgabewerts.
+- **`memory`** (BaseMemory, optional): Speichert Kontext.
+
+---
+
+## 6. MidJourneyPromptChain
+**Beschreibung:** Eine Chain zur Generierung von MidJourney-Prompts.
+
+### Eigenschaften:
+- **`llm`** (BaseLanguageModel, erforderlich): Das verwendete Sprachmodell.
+- **`memory`** (BaseChatMemory, optional): Speichert den Chat-Verlauf.
+
+---
+
+## 7. PromptRunner
+**Beschreibung:** Eine Chain zum Ausführen von Prompts in einer definierbaren Umgebung.
+
+### Eigenschaften:
+- **`llm`** (BaseLLM, erforderlich): Das verwendete Sprachmodell.
+- **`prompt`** (PromptTemplate, erforderlich): Die Prompt-Vorlage.
+- **`inputs`** (Dictionary, erforderlich): Benötigte Eingabevariablen.
+- **`code`** (Python-Code, erforderlich): Implementierung des PromptRunners.
+
+---
+
+## 8. RetrievalQA
+**Beschreibung:** Eine Chain zur Beantwortung von Fragen basierend auf externen Datenquellen.
+
+### Eigenschaften:
+- **`combine_documents_chain`** (BaseCombineDocumentsChain, erforderlich): Die kombinierte Dokumentenkette.
+- **`retriever`** (BaseRetriever, erforderlich): Der verwendete Retriever.
+- **`memory`** (BaseMemory, optional): Speichert den Gesprächsverlauf.
+- **`input_key`** (String, erforderlich): Name des Eingabewerts.
+- **`output_key`** (String, erforderlich): Name des Ausgabewerts.
+- **`return_source_documents`** (Boolean, optional): Gibt an, ob Quell-Dokumente zurückgegeben werden.
+
+---
+
+## 9. SeriesCharacterChain
+**Beschreibung:** Eine Chain zur Konversation mit fiktiven Charakteren aus einer Serie.
+
+### Eigenschaften:
+- **`llm`** (BaseLanguageModel, erforderlich): Das verwendete Sprachmodell.
+- **`character`** (String, erforderlich): Name des Charakters.
+- **`series`** (String, erforderlich): Name der Serie.
+
+---
+
+## 10. SQLDatabaseChain
+**Beschreibung:** Eine Chain zur Interaktion mit SQL-Datenbanken.
+
+### Eigenschaften:
+- **`db`** (SQLDatabase, erforderlich): Die verwendete SQL-Datenbank.
+- **`llm`** (BaseLanguageModel, erforderlich): Das verwendete Sprachmodell.
+- **`prompt`** (BasePromptTemplate, erforderlich): Die verwendete Prompt-Vorlage.
+
+---
+
+## 11. TimeTravelGuideChain
+**Beschreibung:** Eine Chain zur Simulation von Zeitreisen als Gesprächsinteraktion.
+
+### Eigenschaften:
+- **`llm`** (BaseLanguageModel, erforderlich): Das verwendete Sprachmodell.
+- **`memory`** (BaseChatMemory, optional): Speichert den Chat-Verlauf.
+
+---
+
+## Fazit
+Diese Liste enthält eine Sammlung von **LangChain-Chains**, die für verschiedene Anwendungsfälle wie **Dokumentenverarbeitung, Konversationssysteme, mathematische Berechnungen und Datenbankabfragen** genutzt werden können. Jede Chain ist hochgradig konfigurierbar und ermöglicht flexible Anwendungen durch verschiedene KI-Modelle und Speicherlösungen.
+
