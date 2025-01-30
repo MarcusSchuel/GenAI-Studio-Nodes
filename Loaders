@@ -1,0 +1,134 @@
+# Dokumentation der Loaders
+
+## Einleitung
+Diese Dokumentation beschreibt die **Dokumenten-Loader** für das LangChain-Framework, ihre Eigenschaften, Konfigurationen und deren Verwendung.
+
+## 1. AirbyteJSONLoader
+**Beschreibung:** Lädt lokale `Airbyte` JSON-Dateien.
+
+### Eigenschaften:
+- **`file_path`** (String, erforderlich): Pfad zur JSON-Datei.
+- **`metadata`** (Dictionary, optional): Zusätzliche Metadaten.
+- **`code`** (Python-Code, erforderlich): Implementierung des Loaders.
+- **[Dokumentation](https://python.langchain.com/docs/modules/data_connection/document_loaders/integrations/airbyte_json)**
+
+---
+
+## 2. AZLyricsLoader
+**Beschreibung:** Lädt Songtexte von `AZLyrics` Webseiten.
+
+### Eigenschaften:
+- **`web_path`** (String, erforderlich): URL der Webseite.
+- **`metadata`** (Dictionary, optional): Zusätzliche Metadaten.
+- **[Dokumentation](https://python.langchain.com/docs/modules/data_connection/document_loaders/integrations/azlyrics)**
+
+---
+
+## 3. BSHTMLLoader
+**Beschreibung:** Lädt `HTML`-Dateien und verarbeitet sie mit `BeautifulSoup`.
+
+### Eigenschaften:
+- **`file_path`** (String, erforderlich): Pfad zur HTML-Datei.
+- **`metadata`** (Dictionary, optional): Zusätzliche Metadaten.
+- **[Dokumentation](https://python.langchain.com/docs/modules/data_connection/document_loaders/how_to/html)**
+
+---
+
+## 4. CSVLoader
+**Beschreibung:** Lädt `CSV`-Dateien und konvertiert sie in Dokumente.
+
+### Eigenschaften:
+- **`file_path`** (String, erforderlich): Pfad zur CSV-Datei.
+- **`metadata`** (Dictionary, optional): Zusätzliche Metadaten.
+- **[Dokumentation](https://python.langchain.com/docs/modules/data_connection/document_loaders/integrations/csv)**
+
+---
+
+## 5. DirectoryLoader
+**Beschreibung:** Lädt alle Dateien aus einem Verzeichnis.
+
+### Eigenschaften:
+- **`path`** (String, erforderlich): Lokales Verzeichnis.
+- **`glob`** (String, optional): Dateimuster (Standard: `**/*.txt`).
+- **`recursive`** (Boolean, optional): Rekursive Suche aktivieren.
+- **`max_concurrency`** (Integer, optional): Maximale Anzahl paralleler Ladevorgänge.
+- **[Dokumentation](https://python.langchain.com/docs/modules/data_connection/document_loaders/how_to/directory)**
+
+---
+
+## 6. EverNoteLoader
+**Beschreibung:** Lädt Notizen aus `EverNote`.
+
+### Eigenschaften:
+- **`file_path`** (String, erforderlich): Pfad zur XML-Datei.
+- **[Dokumentation](https://python.langchain.com/docs/modules/data_connection/document_loaders/integrations/evernote)**
+
+---
+
+## 7. FileLoader
+**Beschreibung:** Universeller Datei-Loader für verschiedene Formate (`JSON`, `TXT`, `CSV`, `HTML`, `PDF`, `DOCX`, usw.).
+
+### Eigenschaften:
+- **`file_path`** (String, erforderlich): Dateipfad.
+- **`loader`** (String, erforderlich): Gewünschter Datei-Parser (Standard: `Automatic`).
+
+---
+
+## 8. GitLoader
+**Beschreibung:** Lädt Dateien aus einem `Git`-Repository.
+
+### Eigenschaften:
+- **`repo_path`** (String, erforderlich): Pfad zum Repository.
+- **`branch`** (String, optional): Name des Branches.
+- **[Dokumentation](https://python.langchain.com/docs/modules/data_connection/document_loaders/integrations/git)**
+
+---
+
+## 9. PyPDFLoader
+**Beschreibung:** Lädt `PDF`-Dateien mit `PyPDF` und konvertiert sie in Dokumente.
+
+### Eigenschaften:
+- **`file_path`** (String, erforderlich): Pfad zur PDF-Datei.
+- **[Dokumentation](https://python.langchain.com/docs/modules/data_connection/document_loaders/how_to/pdf)**
+
+---
+
+## 10. SlackDirectoryLoader
+**Beschreibung:** Lädt Nachrichten aus einem `Slack`-Datenarchiv.
+
+### Eigenschaften:
+- **`zip_path`** (String, erforderlich): Pfad zur ZIP-Datei mit Slack-Daten.
+- **[Dokumentation](https://python.langchain.com/docs/modules/data_connection/document_loaders/integrations/slack)**
+
+---
+
+## 11. TextLoader
+**Beschreibung:** Lädt `TXT`-Dateien.
+
+### Eigenschaften:
+- **`file_path`** (String, erforderlich): Pfad zur Textdatei.
+- **[Dokumentation](https://python.langchain.com/docs/modules/data_connection/document_loaders/)**
+
+---
+
+## 12. UnstructuredHTMLLoader
+**Beschreibung:** Lädt `HTML`-Dateien mit `Unstructured` für bessere Verarbeitung.
+
+### Eigenschaften:
+- **`file_path`** (String, erforderlich): Pfad zur HTML-Datei.
+- **[Dokumentation](https://python.langchain.com/docs/modules/data_connection/document_loaders/how_to/html)**
+
+---
+
+## 13. UrlLoader
+**Beschreibung:** Lädt Inhalte von Webseiten.
+
+### Eigenschaften:
+- **`web_path`** (String, erforderlich): URL der Webseite.
+- **`loader`** (String, erforderlich): Auswahl des Webseiten-Parsers (z. B. `WebBaseLoader`).
+
+---
+
+## Fazit
+Diese Liste enthält eine Vielzahl von **Loaders**, die unterschiedliche **Dateiformate und Datenquellen** unterstützen. Sie ermöglichen die Verarbeitung von **lokalen Dateien, Cloud-Daten, Webseiten und APIs** im LangChain-Framework. Jedes Modul ist flexibel konfigurierbar und optimiert für spezifische Anwendungsfälle.
+
