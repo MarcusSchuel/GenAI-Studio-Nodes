@@ -1,0 +1,105 @@
+# Dokumentation der Embeddings
+
+## Einleitung
+Diese Dokumentation beschreibt die **Embedding-Modelle** für das LangChain-Framework, ihre Eigenschaften, Konfigurationen und deren Verwendung.
+
+## 1. AmazonBedrockEmbeddings
+**Beschreibung:** Ein Einbettungsmodell, das auf Amazon Bedrock basiert.
+
+### Eigenschaften:
+- **`model_id`** (String, erforderlich): Das verwendete Modell. Optionen:
+  - `amazon.titan-embed-text-v1`
+- **`credentials_profile_name`** (String, optional): Name des AWS-Anmeldeprofils.
+- **`endpoint_url`** (String, optional): Die Bedrock API-Endpunkt-URL.
+- **`region_name`** (String, optional): Die AWS-Region.
+- **`code`** (Python-Code, erforderlich): Implementierung des Embeddings-Modells.
+
+---
+
+## 2. AzureOpenAIEmbeddings
+**Beschreibung:** Ein OpenAI-Embedding-Modell, das über Azure bereitgestellt wird.
+
+### Eigenschaften:
+- **`azure_endpoint`** (String, erforderlich): Azure OpenAI API-Endpunkt.
+- **`azure_deployment`** (String, erforderlich): Name der Azure-Bereitstellung.
+- **`api_version`** (String, erforderlich): Version der API.
+- **`api_key`** (String, erforderlich): OpenAI-API-Schlüssel.
+- **`code`** (Python-Code, erforderlich): Implementierung des Azure OpenAI-Embedding-Modells.
+
+---
+
+## 3. CohereEmbeddings
+**Beschreibung:** Ein Cohere-Embedding-Modell für Texteinbettungen.
+
+### Eigenschaften:
+- **`cohere_api_key`** (String, erforderlich): API-Schlüssel für Cohere.
+- **`model`** (String, erforderlich): Standardmodell (`embed-english-v2.0`).
+- **`truncate`** (String, optional): Trunkierungsoptionen.
+- **`max_retries`** (Integer, optional): Maximale Anzahl an Wiederholungen.
+- **`user_agent`** (String, optional): Benutzer-Agent.
+- **`code`** (Python-Code, erforderlich): Implementierung des Cohere-Embedding-Modells.
+
+---
+
+## 4. HuggingFaceEmbeddings
+**Beschreibung:** Ein Embedding-Modell basierend auf **Hugging Face**-Modellen.
+
+### Eigenschaften:
+- **`model_name`** (String, erforderlich): Standardmodell (`sentence-transformers/all-mpnet-base-v2`).
+- **`cache_folder`** (String, optional): Speicherort für Modellcache.
+- **`encode_kwargs`** (Dictionary, optional): Zusätzliche Kodierungseinstellungen.
+- **`model_kwargs`** (Dictionary, optional): Zusätzliche Modelleinstellungen.
+- **`multi_process`** (Boolean, optional): Mehrprozess-Unterstützung.
+- **`code`** (Python-Code, erforderlich): Implementierung des Hugging Face-Embedding-Modells.
+
+---
+
+## 5. HuggingFaceInferenceAPIEmbeddings
+**Beschreibung:** Ein Embedding-Modell von Hugging Face, das über deren API läuft.
+
+### Eigenschaften:
+- **`api_key`** (String, erforderlich): Hugging Face API-Schlüssel.
+- **`api_url`** (String, erforderlich): Standard-API-URL (`http://localhost:8080`).
+- **`model_name`** (String, erforderlich): Modellname (`BAAI/bge-large-en-v1.5`).
+- **`cache_folder`** (String, optional): Speicherort für Modellcache.
+- **`encode_kwargs`** (Dictionary, optional): Zusätzliche Kodierungseinstellungen.
+- **`model_kwargs`** (Dictionary, optional): Zusätzliche Modelleinstellungen.
+- **`multi_process`** (Boolean, optional): Mehrprozess-Unterstützung.
+- **`code`** (Python-Code, erforderlich): Implementierung des Hugging Face Inference API-Embedding-Modells.
+
+---
+
+## 6. OllamaEmbeddings
+**Beschreibung:** Ein Embedding-Modell, das mit **Ollama** verwendet wird.
+
+### Eigenschaften:
+- **`model`** (String, erforderlich): Standardmodell (`llama2`).
+- **`base_url`** (String, erforderlich): API-Basis-URL (`http://localhost:11434`).
+- **`temperature`** (Float, optional): Modell-Temperatur für Variabilität.
+- **`code`** (Python-Code, erforderlich): Implementierung des Ollama-Embedding-Modells.
+
+---
+
+## 7. OpenAIEmbeddings
+**Beschreibung:** Ein OpenAI-Embedding-Modell für Textverarbeitung.
+
+### Eigenschaften:
+- **`model`** (String, erforderlich): Standardmodell (`text-embedding-3-small`).
+  - Optionen:
+    - `text-embedding-3-small`
+    - `text-embedding-3-large`
+    - `text-embedding-ada-002`
+- **`openai_api_key`** (String, erforderlich): OpenAI-API-Schlüssel.
+- **`openai_api_base`** (String, optional): OpenAI-API-Endpunkt.
+- **`max_retries`** (Integer, optional): Maximale Anzahl an Wiederholungen.
+- **`chunk_size`** (Integer, optional): Größe der Verarbeitungseinheiten (Standard: 1000 Tokens).
+- **`embedding_ctx_length`** (Integer, optional): Maximale Länge des Einbettungskontexts.
+- **`show_progress_bar`** (Boolean, optional): Fortschrittsanzeige aktivieren.
+- **`skip_empty`** (Boolean, optional): Leere Eingaben überspringen.
+- **`code`** (Python-Code, erforderlich): Implementierung des OpenAI-Embedding-Modells.
+
+---
+
+## Fazit
+Die Liste enthält verschiedene **Embedding-Modelle** für **Texteinbettungen** in **LangChain**. Diese Modelle ermöglichen verschiedene Ansätze zur Textverarbeitung, darunter **Cloud-basierte APIs (OpenAI, Azure, Amazon Bedrock, Hugging Face)** und **lokale Modelle (Ollama, Hugging Face)**. Jedes Modell kann flexibel konfiguriert und an spezifische Anwendungsfälle angepasst werden.
+
