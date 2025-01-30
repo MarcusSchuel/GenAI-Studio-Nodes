@@ -1,0 +1,47 @@
+# Dokumentation der Pre-Approved Models
+
+## Einleitung
+Diese Dokumentation beschreibt die **vorab genehmigten Modelle (Pre-Approved Models)** für das LangChain-Framework, ihre Eigenschaften, Konfigurationen und deren Verwendung.
+
+## 1. PreApproved Embeddings
+**Beschreibung:** Ein vordefiniertes und genehmigtes **Embedding-Modell** zur Erzeugung von Vektoreinbettungen.
+
+### Eigenschaften:
+- **`model`** (String, erforderlich): Name des Modells aus dem Modell-Store.
+  - Verfügbare Optionen:
+    - `text-embedding-ada-002`
+    - `text-embedding-3-small`
+    - `text-embedding-3-large`
+- **`code`** (Python-Code, optional): Implementierung der Komponente.
+- **Funktion:**
+  - Lädt das Modell aus dem **LiteLLM-Service**.
+- **Basisklassen:**
+  - `Embeddings`
+
+---
+
+## 2. PreApproved LLM
+**Beschreibung:** Ein vordefiniertes und genehmigtes **Large Language Model (LLM)** zur Verarbeitung natürlicher Sprache.
+
+### Eigenschaften:
+- **`model`** (String, erforderlich): Name des LLM-Modells aus dem Modell-Store.
+  - Verfügbare Optionen:
+    - `gpt-4-turbo`
+    - `gpt-4o`
+    - `claude-35-sonnet`
+    - `llama-3-70b-instruct`
+    - `mistral-7b-instruct`
+    - `deepseek-r1-distill-llama-70b`
+- **`max_tokens`** (Integer, optional): Maximale Anzahl von Token (Standard: 4096).
+- **`temperature`** (Float, optional): Temperatur des Modells zur Steuerung der Kreativität (Standard: 0.7).
+- **`code`** (Python-Code, optional): Implementierung der Komponente.
+- **Funktion:**
+  - Lädt das Modell aus dem **LiteLLM-Service** mit den angegebenen Parametern.
+- **Basisklassen:**
+  - `BaseLanguageModel`
+
+---
+
+## Fazit
+Diese Liste enthält **vordefinierte und genehmigte** Modelle für **Embedding-Generierung** und **natürliche Sprachverarbeitung (LLMs)**. Sie ermöglichen eine einfache Auswahl aus einem **freigegebenen Modellbestand** und können flexibel konfiguriert werden.
+
